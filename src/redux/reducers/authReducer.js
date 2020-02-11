@@ -1,7 +1,16 @@
-import { LOGIN, LOGOUT } from "../actionType";
+import {
+  LOGIN,
+  LOGOUT,
+  REG_REQUEST,
+  REG_SUCCESS,
+  REG_FAILURE
+} from "../actionType";
 
 let initialState = {
-  loggedIn: false
+  loggedIn: false,
+  loading: false,
+  error: null,
+  registrationResponse: ""
 };
 
 const authReducer = (state = initialState, action) => {
@@ -16,6 +25,26 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         loggedIn: false
+      };
+    }
+    case REG_REQUEST: {
+      return {
+        ...state,
+        loading: true
+      };
+    }
+    case REG_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        registrationResponse: action.payload
+      };
+    }
+    case REG_FAILURE: {
+      return {
+        ...state,
+        loading: false,
+        registrationResponse: action.payload
       };
     }
     default:

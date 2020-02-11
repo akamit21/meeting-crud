@@ -8,5 +8,8 @@ export const FILTER_ROOM = "FILTER_ROOM";
 export const SORT_ROOM = "SORT_ROOM";
 
 // auth action types
+export const REG_REQUEST = "REG_REQUEST";
+export const REG_SUCCESS = "REG_SUCCESS";
+export const REG_FAILURE = "REG_FAILURE";
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
