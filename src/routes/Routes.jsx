@@ -2,8 +2,8 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Home from "../component/common/Home";
 import ListRoom from "../component/common/ListRoom";
-import ViewRoom from "../component/common/ViewRoom";
-import AddRoom from "../component/common/AddRoom";
+// import ViewRoom from "../component/common/ViewRoom";
+// import AddRoom from "../component/common/AddRoom";
 import NotFound from "../component/common/NotFound";
 
 import Login from "../component/auth/Login";

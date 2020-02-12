@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <Menubar />
-      <div className="container my-5">
+      <div className="container-fluid px-0">
         <Routes />
       </div>
     </>

@@ -1,0 +1,24 @@
+.homeBG {
+  background-image: url("/images/home-bg.jpg");
+  background-attachment: fixed;
+  height: calc(100vh - 56px);
+  position: relative;
+}
+.homeBox {
+  position: absolute;
+  top: calc(45% - 150px);
+  left: 20%;
+  width: 60%;
+  min-height: 300px;
+  background: rgba(200, 200, 200, 0.4);
+  border: 5px solid rgba(250, 250, 250, 0.25);
+  border-radius: 8px;
+  color: #ffffff;
+  padding: 25px;
+  text-align: center;
+}
+
+.homeBox > h1 {
+  text-shadow: 2px 2px #ff0000;
+  font-weight: 700;
+}

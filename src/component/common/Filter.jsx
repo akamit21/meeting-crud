@@ -53,17 +53,7 @@ class Filter extends Component {
             </select>
           </div>
         </div>
-        <div className="col-md-3">
-          <button
-            type="button"
-            className="btn btn-primary"
-            value="asc"
-            onClick={this.handleAvailable}
-          >
-            AVAILABLE ROOM
-          </button>
-        </div>
-        <div className="col">
+        <div className="col-md-offset-3 col">
           <div className="btn-group float-right" role="group">
             <button
               type="button"
@@ -92,7 +82,6 @@ class Filter extends Component {
 //   return {
 //     filterRoom: data => dispatch(filterRoom(data)),
 //     sortRoom: data => dispatch(sortRoom(data)),
-//     availableRoom: () => dispatch(availableRoom())
 //   };
 // };
 
