@@ -1,9 +1,10 @@
 import {
-  LOGIN,
-  LOGOUT,
   REG_REQUEST,
   REG_SUCCESS,
-  REG_FAILURE
+  REG_FAILURE,
+  LOGIN_REQUEST,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE
 } from "../actionType";
 import Axios from "axios";
 
@@ -22,10 +23,12 @@ export const userSignUp = data => {
     });
     Axios.post("auth/register", { ...data }, config)
       .then(res => {
-        dispatch({
-          type: REG_SUCCESS,
-          payload: res
-        });
+        setTimeout(() => {
+          dispatch({
+            type: REG_SUCCESS,
+            payload: res
+          });
+        }, 3000);
       })
       .catch(err => {
         dispatch({
@@ -35,14 +38,32 @@ export const userSignUp = data => {
       });
   };
 };
-export const userLogin = () => {
-  return {
-    type: LOGIN
+
+export const userLogin = data => {
+  return dispatch => {
+    dispatch({
+      type: LOGIN_REQUEST
+    });
+    Axios.post("auth/login", { ...data }, config)
+      .then(res => {
+        setTimeout(() => {
+          dispatch({
+            type: LOGIN_SUCCESS,
+            payload: res
+          });
+        }, 3000);
+      })
+      .catch(err => {
+        dispatch({
+          type: LOGIN_FAILURE,
+          paylaod: err
+        });
+      });
   };
 };
 
-export const userLogout = () => {
-  return {
-    type: LOGOUT
-  };
-};
+// export const userLogout = () => {
+//   return {
+//     type: LOGOUT
+//   };
+// };

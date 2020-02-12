@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Swal from "sweetalert2";
+import Loader from "react-loader-spinner";
 import { connect } from "react-redux";
 import { userSignUp } from "../../redux/actions/authAction";
 
@@ -50,7 +51,20 @@ class SignUp extends Component {
   };
 
   render() {
-    return (
+    const page = this.props.isLoading ? (
+      <div
+        className="d-flex justify-content-center "
+        style={{ height: "100vh", margin: "0 auto" }}
+      >
+        <Loader
+          type="Audio"
+          color="#00BFFF"
+          height={100}
+          width={100}
+          timeout={3000}
+        />
+      </div>
+    ) : (
       <div className="jumbotron">
         <h1>User Registration</h1>
         <hr />
@@ -108,17 +122,19 @@ class SignUp extends Component {
             />
           </div>
 
-          <button type="submit" className="btn btn-outline-dark">
+          <button type="submit" className="btn btn-outline-dark btn-lg">
             Submit
           </button>
         </form>
       </div>
     );
+    return <>{page}</>;
   }
 }
 
 const mapStateToProps = state => {
   return {
+    isLoading: state.authReducer.isLoading,
     registerResponse: state.authReducer.registrationResponse
   };
 };
