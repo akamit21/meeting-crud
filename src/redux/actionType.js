@@ -1,4 +1,8 @@
 // room action types
+export const FETCH_ROOMS_REQUEST = "FETCH_ROOMS_REQUEST";
+export const FETCH_ROOMS_SUCCESS = "FETCH_ROOMS_SUCCESS";
+export const FETCH_ROOMS_FAILURE = "FETCH_ROOMS_FAILURE";
+
 export const ADD_ROOM = "ADD_ROOM";
 export const AVAILABLE_ROOM = "AVAILABLE_ROOM";
 export const BOOK_ROOM = "BOOK_ROOM";

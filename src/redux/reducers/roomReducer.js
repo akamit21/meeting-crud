@@ -1,109 +1,44 @@
 import {
-  ADD_ROOM,
-  AVAILABLE_ROOM,
-  BOOK_ROOM,
-  VIEW_ROOM,
-  DELETE_ROOM,
-  FILTER_ROOM,
-  SORT_ROOM
+  FETCH_ROOMS_REQUEST,
+  FETCH_ROOMS_SUCCESS,
+  FETCH_ROOMS_FAILURE
 } from "../actionType";
 
-let ls = window.localStorage;
-let initialState = {};
-if (ls.getItem("rooms") != null) {
-  let data = JSON.parse(ls.getItem("rooms"));
-  initialState = {
-    rooms: data,
-    selected: data
-  };
-} else {
-  initialState = {
-    rooms: [],
-    selected: []
-  };
-}
+let initialState = {
+  isLoading: false,
+  rooms: [],
+  error: null,
+  filteredRooms: [],
+  bookedRooms: []
+};
 
-const roomReducer = (state = initialState, action) => {
+export const fetchRoomReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_ROOM: {
-      let temp = [...state.rooms, { ...action.payload }];
-      ls.setItem("rooms", JSON.stringify(temp));
+    case FETCH_ROOMS_REQUEST: {
       return {
         ...state,
-        rooms: [...state.rooms, { ...action.payload }],
-        selected: [...state.rooms, { ...action.payload }]
+        isLoading: true
       };
     }
-    case AVAILABLE_ROOM: {
-      let temp = state.rooms.filter(room => room.booked === false);
+    case FETCH_ROOMS_SUCCESS: {
       return {
         ...state,
-        selected: [...temp]
+        isLoading: false,
+        rooms: action.payload
       };
     }
-    case BOOK_ROOM: {
-      let temp = state.rooms.map((room, index) => {
-        if (index === action.payload) {
-          let data = {
-            floor: room.floor,
-            name: room.name,
-            capacity: room.capacity,
-            price: room.price,
-            booked: true
-          };
-          return data;
-        } else {
-          return room;
-        }
-      });
-      ls.setItem("rooms", JSON.stringify(temp));
+    case FETCH_ROOMS_FAILURE: {
       return {
         ...state,
-        selected: [...temp]
+        isLoading: false,
+        error: action.payload
       };
     }
-    case VIEW_ROOM: {
-      return;
-    }
-    case DELETE_ROOM: {
-      let temp = state.rooms.filter((_, index) => index !== action.payload);
-
-      ls.setItem("rooms", JSON.stringify(temp));
-      return {
-        ...state,
-        rooms: [...temp],
-        selected: [...temp]
-      };
-    }
-    case FILTER_ROOM: {
-      let temp = state.rooms.filter(room => room.floor === action.payload);
-      if (action.payload === "") {
-        return {
-          ...state,
-          selected: [...state.rooms]
-        };
-      }
-      return {
-        ...state,
-        selected: [...temp]
-      };
-    }
-    case SORT_ROOM: {
-      let temp;
-      if (action.payload === "asc") {
-        temp = state.rooms.sort((a, b) => Number(a.price) - Number(b.price));
-      } else {
-        temp = state.rooms.sort((a, b) => Number(b.price) - Number(a.price));
-      }
-      return {
-        ...state,
-        selected: [...temp]
-      };
-    }
-
     default:
       return state;
   }
 };
 
-export default roomReducer;
+// export const fetchRoomRequest = state => state.isLoading;
+// export const fetchRoomSuccess = state => state.rooms;
+// export const fetchRoomFailure = state => state.error;

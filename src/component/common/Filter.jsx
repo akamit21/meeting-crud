@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {
-  filterRoom,
-  sortRoom,
-  availableRoom
-} from "../../redux/actions/roomAction";
+// import {
+//   filterRoom,
+//   sortRoom,
+//   availableRoom
+// } from "../../redux/actions/roomAction";
 
 class Filter extends Component {
   constructor(props) {
@@ -88,12 +88,12 @@ class Filter extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    filterRoom: data => dispatch(filterRoom(data)),
-    sortRoom: data => dispatch(sortRoom(data)),
-    availableRoom: () => dispatch(availableRoom())
-  };
-};
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     filterRoom: data => dispatch(filterRoom(data)),
+//     sortRoom: data => dispatch(sortRoom(data)),
+//     availableRoom: () => dispatch(availableRoom())
+//   };
+// };
 
-export default connect(null, mapDispatchToProps)(Filter);
+export default connect(null, null)(Filter);

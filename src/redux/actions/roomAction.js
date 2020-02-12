@@ -1,51 +1,37 @@
 import {
-  ADD_ROOM,
-  AVAILABLE_ROOM,
-  BOOK_ROOM,
-  VIEW_ROOM,
-  DELETE_ROOM,
-  FILTER_ROOM,
-  SORT_ROOM
+  FETCH_ROOMS_REQUEST,
+  FETCH_ROOMS_SUCCESS,
+  FETCH_ROOMS_FAILURE
 } from "../actionType";
+import Axios from "axios";
 
-export const addRoom = data => {
-  return {
-    type: ADD_ROOM,
-    payload: data
-  };
+const config = {
+  baseURL: "http://localhost:4000",
+  headers: {
+    "Content-Type": "application/json"
+  }
 };
-export const availableRoom = () => {
-  return {
-    type: AVAILABLE_ROOM
-  };
-};
-export const bookRoom = data => {
-  return {
-    type: BOOK_ROOM,
-    payload: data
-  };
-};
-export const viewRoom = data => {
-  return {
-    type: VIEW_ROOM,
-    payload: data
-  };
-};
-export const deleteRoom = data => {
-  return {
-    type: DELETE_ROOM,
-    payload: data
-  };
-};
-export const filterRoom = data => {
-  return {
-    type: FILTER_ROOM,
-    payload: data
-  };
-};
-export const sortRoom = data => {
-  return {
-    type: SORT_ROOM,
-    payload: data
+
+export const fetchRoomList = () => {
+  return async dispatch => {
+    dispatch({
+      type: FETCH_ROOMS_REQUEST
+    });
+    try {
+      const res = await Axios.get("/meeting-rooms", config);
+      console.log(res);
+      setTimeout(() => {
+        dispatch({
+          type: FETCH_ROOMS_SUCCESS,
+          payload: { status: 200, error: false, response: res.data }
+        });
+      }, 2000);
+    } catch (err) {
+      console.log(err);
+      dispatch({
+        type: FETCH_ROOMS_FAILURE,
+        payload: { status: 404, error: true, response: err.message }
+      });
+    }
   };
 };

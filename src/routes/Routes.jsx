@@ -17,8 +17,8 @@ const Routes = () => {
       <Route path="/login" component={Login} />
       <Route path="/signup" component={SignUp} />
       <PrivateRoute path="/list-room" component={ListRoom} />
-      <PrivateRoute path="/view-room/:id" component={ViewRoom} />
-      <PrivateRoute path="/add-room" component={AddRoom} />
+      {/* <PrivateRoute path="/view-room/:id" component={ViewRoom} />
+      <PrivateRoute path="/add-room" component={AddRoom} /> */}
       <Route path="*">
         <NotFound />
       </Route>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addRoom } from "../../redux/actions/roomAction";
+// import { addRoom } from "../../redux/actions/roomAction";
 
 class AddRoom extends Component {
   constructor(props) {
@@ -96,9 +96,9 @@ class AddRoom extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    addRoom: data => dispatch(addRoom(data))
-  };
-};
-export default connect(null, mapDispatchToProps)(AddRoom);
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     addRoom: data => dispatch(addRoom(data))
+//   };
+// };
+export default connect(null, null)(AddRoom);
