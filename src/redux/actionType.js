@@ -3,10 +3,15 @@ export const FETCH_ROOMS_REQUEST = "FETCH_ROOMS_REQUEST";
 export const FETCH_ROOMS_SUCCESS = "FETCH_ROOMS_SUCCESS";
 export const FETCH_ROOMS_FAILURE = "FETCH_ROOMS_FAILURE";
 
-export const ADD_ROOM = "ADD_ROOM";
+// add new room
+export const ADD_ROOM_REQUEST = "ADD_ROOM_REQUEST";
+export const ADD_ROOM_SUCCESS = "ADD_ROOM_SUCCESS";
+export const ADD_ROOM_FAILURE = "ADD_ROOM_FAILURE";
+
 export const AVAILABLE_ROOM = "AVAILABLE_ROOM";
 export const BOOK_ROOM = "BOOK_ROOM";
 export const VIEW_ROOM = "VIEW_ROOM";
+
 export const DELETE_ROOM = "DELETE_ROOM";
 export const FILTER_ROOM = "FILTER_ROOM";
 export const SORT_ROOM = "SORT_ROOM";

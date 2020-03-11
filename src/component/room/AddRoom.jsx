@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import uniqid from "uniqid";
 import { connect } from "react-redux";
-// import { addRoom } from "../../redux/actions/roomAction";
+import { addNewRoom } from "../../redux/actions/roomAction";
 
 class AddRoom extends Component {
   constructor(props) {
@@ -22,18 +23,20 @@ class AddRoom extends Component {
   handleSubmit = e => {
     e.preventDefault();
     let data = {
-      floor: this.state.floor,
+      id: uniqid(),
+      floor: Number(this.state.floor),
       name: this.state.name,
-      capacity: this.state.capacity,
-      price: this.state.price,
-      booked: false
+      capacity: Number(this.state.capacity),
+      price: Number(this.state.price),
+      isBooked: false,
+      bookedDate: []
     };
     this.props.addRoom(data);
   };
 
   render() {
     return (
-      <div className="jumbotron">
+      <div className="container jumbotron mt-5">
         <h1 className="display-4">ADD NEW ROOM</h1>
         <form onSubmit={e => this.handleSubmit(e)}>
           <div className="form-group">
@@ -96,9 +99,9 @@ class AddRoom extends Component {
   }
 }
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     addRoom: data => dispatch(addRoom(data))
-//   };
-// };
-export default connect(null, null)(AddRoom);
+const mapDispatchToProps = dispatch => {
+  return {
+    addRoom: data => dispatch(addNewRoom(data))
+  };
+};
+export default connect(null, mapDispatchToProps)(AddRoom);

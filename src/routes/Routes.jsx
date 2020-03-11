@@ -1,9 +1,9 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import Home from "../component/common/Home";
-import ListRoom from "../component/common/ListRoom";
+import Home from "../component/home/Home";
+import ListRoom from "../component/room/ListRoom";
 // import ViewRoom from "../component/common/ViewRoom";
-// import AddRoom from "../component/common/AddRoom";
+import AddRoom from "../component/room/AddRoom";
 import NotFound from "../component/common/NotFound";
 
 import Login from "../component/auth/Login";
@@ -17,8 +17,8 @@ const Routes = () => {
       <Route path="/login" component={Login} />
       <Route path="/signup" component={SignUp} />
       <PrivateRoute path="/list-room" component={ListRoom} />
-      {/* <PrivateRoute path="/view-room/:id" component={ViewRoom} />
-      <PrivateRoute path="/add-room" component={AddRoom} /> */}
+      {/* {/* <PrivateRoute path="/view-room/:id" component={ViewRoom} /> */}
+      <PrivateRoute path="/add-room" component={AddRoom} />
       <Route path="*">
         <NotFound />
       </Route>

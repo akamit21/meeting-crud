@@ -2,16 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Filter from "./Filter";
 import Card from "./Card";
-import PageLoader from "./PageLoader";
-import { fetchRoomList } from "../../redux/actions/roomAction";
+import PageLoader from "../common/PageLoader";
 
 class ListRoom extends Component {
   // constructor(props) {
   //   super (props)
   // }
-  UNSAFE_componentWillMount = () => {
-    this.props.roomList();
-  };
 
   render() {
     const {
@@ -54,7 +50,7 @@ const mapDispatchToProps = dispatch => {
   return {
     // bookRoom: data => dispatch(bookRoom(data)),
     // deleteRoom: data => dispatch(deleteRoom(data)),
-    roomList: () => dispatch(fetchRoomList())
+    // roomList: () => dispatch(fetchRoomList())
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ListRoom);

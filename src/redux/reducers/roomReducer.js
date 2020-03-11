@@ -1,13 +1,15 @@
 import {
   FETCH_ROOMS_REQUEST,
   FETCH_ROOMS_SUCCESS,
-  FETCH_ROOMS_FAILURE
+  FETCH_ROOMS_FAILURE,
+  AVAILABLE_ROOM
 } from "../actionType";
 
 let initialState = {
   isLoading: false,
-  rooms: [],
   error: null,
+  allRooms: [],
+  availableRooms: [],
   filteredRooms: [],
   bookedRooms: []
 };
@@ -33,6 +35,19 @@ export const fetchRoomReducer = (state = initialState, action) => {
         isLoading: false,
         error: action.payload
       };
+    }
+    default:
+      return state;
+  }
+};
+
+export const availableRoomReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case AVAILABLE_ROOM: {
+      const { startDate, endDate } = action.payload;
+      let sd = new Date(startDate);
+      console.log(sd.getTime(), endDate);
+      return state;
     }
     default:
       return state;
