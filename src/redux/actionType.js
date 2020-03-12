@@ -8,11 +8,14 @@ export const ADD_ROOM_REQUEST = "ADD_ROOM_REQUEST";
 export const ADD_ROOM_SUCCESS = "ADD_ROOM_SUCCESS";
 export const ADD_ROOM_FAILURE = "ADD_ROOM_FAILURE";
 
-export const AVAILABLE_ROOM = "AVAILABLE_ROOM";
-export const BOOK_ROOM = "BOOK_ROOM";
-export const VIEW_ROOM = "VIEW_ROOM";
+// book room
+export const BOOK_ROOM_REQUEST = "BOOK_ROOM_REQUEST";
+export const BOOK_ROOM_SUCCESS = "BOOK_ROOM_SUCCESS";
+export const BOOK_ROOM_FAILURE = "BOOK_ROOM_FAILURE";
 
+export const VIEW_ROOM = "VIEW_ROOM";
 export const DELETE_ROOM = "DELETE_ROOM";
+export const AVAILABLE_ROOM = "AVAILABLE_ROOM";
 export const FILTER_ROOM = "FILTER_ROOM";
 export const SORT_ROOM = "SORT_ROOM";
 

@@ -5,7 +5,10 @@ import {
   AVAILABLE_ROOM,
   ADD_ROOM_REQUEST,
   ADD_ROOM_SUCCESS,
-  ADD_ROOM_FAILURE
+  ADD_ROOM_FAILURE,
+  BOOK_ROOM_REQUEST,
+  BOOK_ROOM_FAILURE,
+  BOOK_ROOM_SUCCESS
 } from "../actionType";
 import Axios from "axios";
 
@@ -16,16 +19,17 @@ const config = {
   }
 };
 
-export const fetchRoomList = () => {
+export const fetchAllRoom = () => {
   return async dispatch => {
     dispatch({
       type: FETCH_ROOMS_REQUEST
     });
     try {
       const res = await Axios.get("/meeting-rooms", config);
+      console.log(res);
       dispatch({
         type: FETCH_ROOMS_SUCCESS,
-        payload: res.data
+        payload: res
       });
     } catch (err) {
       console.log(err);
@@ -44,9 +48,10 @@ export const addNewRoom = data => {
     });
     try {
       const res = await Axios.post("/meeting-rooms", { ...data }, config);
+      console.log(res);
       dispatch({
         type: ADD_ROOM_SUCCESS,
-        payload: res.data
+        payload: res
       });
     } catch (err) {
       console.log(err);
@@ -57,8 +62,29 @@ export const addNewRoom = data => {
   };
 };
 
+export const bookRoom = data => {
+  return async dispatch => {
+    dispatch({
+      type: BOOK_ROOM_REQUEST
+    });
+    try {
+      const res = await Axios.post("/meeting-room", { ...data }, config);
+      console.log(res);
+      dispatch({
+        type: BOOK_ROOM_SUCCESS,
+        payload: res
+      });
+    } catch (err) {
+      console.log(err);
+      dispatch({
+        type: BOOK_ROOM_FAILURE,
+        payload: err
+      });
+    }
+  };
+};
+
 export const fetchAvailableRoom = data => {
-  // console.log(data);
   return {
     type: AVAILABLE_ROOM,
     payload: data

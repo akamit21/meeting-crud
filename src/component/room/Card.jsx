@@ -28,7 +28,7 @@ const Card = props => {
             <button
               type="button"
               className={`btn ${room.booked ? "btn-warning" : "btn-success"}`}
-              onClick={() => this.props.bookRoom(index)}
+              onClick={() => props.roomId(room.id)}
             >
               {room.booked ? "BOOKED" : "BOOK NOW"}
             </button>

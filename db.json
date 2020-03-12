@@ -6,7 +6,7 @@
       "name": "Room Four",
       "capacity": 25,
       "price": 4328,
-      "isBooked": false,
+      "isBooked": true,
       "bookeDate": []
     },
     {

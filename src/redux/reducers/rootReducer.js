@@ -1,10 +1,9 @@
 import { combineReducers } from "redux";
-import { fetchRoomReducer, availableRoomReducer } from "./roomReducer";
+import { roomReducer } from "./roomReducer";
 import authReducer from "./authReducer";
 
 const rootReducer = combineReducers({
-  fetchRoomReducer,
-  availableRoomReducer,
+  roomReducer,
   authReducer
 });
 
