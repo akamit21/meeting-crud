@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import {
-//   filterRoom,
-//   sortRoom,
-//   availableRoom
-// } from "../../redux/actions/roomAction";
+import { filterRoom, sortRoom } from "../../redux/actions/roomAction";
 
 class Filter extends Component {
   constructor(props) {
@@ -27,10 +23,6 @@ class Filter extends Component {
       sortType: e.target.value
     });
     this.props.sortRoom(e.target.value);
-  };
-
-  handleAvailable = () => {
-    this.props.availableRoom();
   };
 
   render() {
@@ -78,11 +70,11 @@ class Filter extends Component {
   }
 }
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     filterRoom: data => dispatch(filterRoom(data)),
-//     sortRoom: data => dispatch(sortRoom(data)),
-//   };
-// };
+const mapDispatchToProps = dispatch => {
+  return {
+    filterRoom: data => dispatch(filterRoom(data)),
+    sortRoom: data => dispatch(sortRoom(data))
+  };
+};
 
-export default connect(null, null)(Filter);
+export default connect(null, mapDispatchToProps)(Filter);

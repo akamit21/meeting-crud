@@ -6,8 +6,8 @@
       "name": "Room Four",
       "capacity": 25,
       "price": 4328,
-      "isBooked": true,
-      "bookeDate": []
+      "isBooked": false,
+      "bookedDate": []
     },
     {
       "id": "k7nanaxz",
@@ -15,8 +15,8 @@
       "name": "Room Seven",
       "capacity": 15,
       "price": 3121,
-      "isBooked": true,
-      "bookeDate": []
+      "isBooked": false,
+      "bookedDate": []
     },
     {
       "id": "k6nanaxz",
@@ -24,8 +24,8 @@
       "name": "Room Three",
       "capacity": 16,
       "price": 1128,
-      "isBooked": true,
-      "bookeDate": []
+      "isBooked": false,
+      "bookedDate": []
     },
     {
       "id": "a7nanaxz",
@@ -34,7 +34,7 @@
       "capacity": 17,
       "price": 2544,
       "isBooked": false,
-      "bookeDate": []
+      "bookedDate": []
     },
     {
       "id": "b6nanaxz",
@@ -43,7 +43,7 @@
       "capacity": 49,
       "price": 6933,
       "isBooked": false,
-      "bookeDate": []
+      "bookedDate": []
     },
     {
       "id": "c8nanaxz",
@@ -52,7 +52,7 @@
       "capacity": 37,
       "price": 4219,
       "isBooked": false,
-      "bookeDate": []
+      "bookedDate": []
     },
     {
       "id": "d1aanaxz",
@@ -60,8 +60,8 @@
       "name": "Room Seven",
       "capacity": 48,
       "price": 2522,
-      "isBooked": true,
-      "bookeDate": []
+      "isBooked": false,
+      "bookedDate": []
     },
     {
       "id": "k4zbnaxz",
@@ -69,8 +69,8 @@
       "name": "Room Four",
       "capacity": 32,
       "price": 2478,
-      "isBooked": true,
-      "bookeDate": []
+      "isBooked": false,
+      "bookedDate": []
     },
     {
       "id": "k5zbmaxz",
@@ -78,8 +78,8 @@
       "name": "Room Eight",
       "capacity": 25,
       "price": 8146,
-      "isBooked": true,
-      "bookeDate": []
+      "isBooked": false,
+      "bookedDate": []
     }
   ]
 }

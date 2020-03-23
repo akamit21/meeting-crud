@@ -1,14 +1,16 @@
 import {
-  FETCH_ROOMS_REQUEST,
-  FETCH_ROOMS_SUCCESS,
-  FETCH_ROOMS_FAILURE,
-  AVAILABLE_ROOM,
   ADD_ROOM_REQUEST,
   ADD_ROOM_SUCCESS,
   ADD_ROOM_FAILURE,
+  FETCH_ROOMS_REQUEST,
+  FETCH_ROOMS_SUCCESS,
+  FETCH_ROOMS_FAILURE,
   BOOK_ROOM_REQUEST,
   BOOK_ROOM_FAILURE,
-  BOOK_ROOM_SUCCESS
+  BOOK_ROOM_SUCCESS,
+  AVAILABLE_ROOM,
+  FILTER_ROOM,
+  SORT_ROOM
 } from "../actionType";
 import Axios from "axios";
 
@@ -19,6 +21,29 @@ const config = {
   }
 };
 
+// add new room to db
+export const addNewRoom = data => {
+  return async dispatch => {
+    dispatch({
+      type: ADD_ROOM_REQUEST
+    });
+    try {
+      const res = await Axios.post("/meeting-rooms", { ...data }, config);
+      console.log(res);
+      dispatch({
+        type: ADD_ROOM_SUCCESS,
+        payload: res
+      });
+    } catch (err) {
+      console.log(err);
+      dispatch({
+        type: ADD_ROOM_FAILURE
+      });
+    }
+  };
+};
+
+// get list of all rooms
 export const fetchAllRoom = () => {
   return async dispatch => {
     dispatch({
@@ -41,34 +66,18 @@ export const fetchAllRoom = () => {
   };
 };
 
-export const addNewRoom = data => {
-  return async dispatch => {
-    dispatch({
-      type: ADD_ROOM_REQUEST
-    });
-    try {
-      const res = await Axios.post("/meeting-rooms", { ...data }, config);
-      console.log(res);
-      dispatch({
-        type: ADD_ROOM_SUCCESS,
-        payload: res
-      });
-    } catch (err) {
-      console.log(err);
-      dispatch({
-        type: ADD_ROOM_FAILURE
-      });
-    }
-  };
-};
-
-export const bookRoom = data => {
+// book room
+export const bookRoom = (data, id) => {
   return async dispatch => {
     dispatch({
       type: BOOK_ROOM_REQUEST
     });
     try {
-      const res = await Axios.post("/meeting-room", { ...data }, config);
+      const res = await Axios.patch(
+        "/meeting-rooms/" + id,
+        { ...data },
+        config
+      );
       console.log(res);
       dispatch({
         type: BOOK_ROOM_SUCCESS,
@@ -84,9 +93,25 @@ export const bookRoom = data => {
   };
 };
 
+// get available room list
 export const fetchAvailableRoom = data => {
   return {
     type: AVAILABLE_ROOM,
+    payload: data
+  };
+};
+
+// filter room
+export const filterRoom = data => {
+  return {
+    type: FILTER_ROOM,
+    payload: data
+  };
+};
+// sort room
+export const sortRoom = data => {
+  return {
+    type: SORT_ROOM,
     payload: data
   };
 };

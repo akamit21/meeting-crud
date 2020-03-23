@@ -17,23 +17,29 @@ class ListRoom extends Component {
   componentDidMount = () => {
     if (localStorage && localStorage.getItem("date")) {
       let date = JSON.parse(localStorage.getItem("date"));
-      this.setState({
+      let data = {
         startDate: date.startDate,
         endDate: date.endDate
-      });
-      // console.log(date);
+      };
+      this.setState(data);
+      this.props.availableRoom(data);
+    } else {
+      this.props.history.push("/");
     }
-    this.props.availableRoom("f");
   };
 
   getRoomId = id => {
-    alert(id);
+    // alert(id);
     let data = {
-      id: id,
-      startDate: this.state.startDate,
-      endDate: this.state.endDate
+      isBooked: true,
+      bookedDate: [
+        {
+          startDate: this.state.startDate,
+          endDate: this.state.endDate
+        }
+      ]
     };
-    this.props.bookRoom(data);
+    this.props.bookRoom(data, id);
   };
 
   render() {
@@ -73,7 +79,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    bookRoom: data => dispatch(bookRoom(data)),
+    bookRoom: (data, id) => dispatch(bookRoom(data, id)),
     // deleteRoom: data => dispatch(deleteRoom(data)),
     availableRoom: data => dispatch(fetchAvailableRoom(data))
   };

@@ -32,14 +32,6 @@ class Home extends Component {
       })
     );
     this.props.history.push("/list-room");
-    // way to pass state value as an object
-    // this.props.history.push({
-    //   pathname: "/list-room",
-    //   state: {
-    //     startDate: "value"
-    //   }
-    // });
-    // this.props.availableRoom(userData);
   };
 
   render() {
