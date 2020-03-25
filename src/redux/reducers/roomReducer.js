@@ -72,7 +72,7 @@ export const roomReducer = (state = initialState, action) => {
       if (action.payload === "") {
         return {
           ...state,
-          availableRooms: [...state.availableRooms]
+          availableRooms: [...state.rooms]
         };
       }
       return {

@@ -35,13 +35,6 @@ const Card = props => {
             <Link to={`/view-room/${index}`} className="btn btn-info">
               VIEW
             </Link>
-            <button
-              type="button"
-              className="btn btn-danger"
-              onClick={() => this.props.deleteRoom(index)}
-            >
-              DELETE
-            </button>
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Swal from "sweetalert2";
 import Filter from "./Filter";
 import Card from "./Card";
 import PageLoader from "../common/PageLoader";
@@ -15,7 +16,7 @@ class ListRoom extends Component {
   }
 
   componentDidMount = () => {
-    if (localStorage && localStorage.getItem("date")) {
+    if (this.props.allRooms.length !== 0) {
       let date = JSON.parse(localStorage.getItem("date"));
       let data = {
         startDate: date.startDate,
@@ -39,6 +40,15 @@ class ListRoom extends Component {
       bookedDate: [...r[0].bookedDate, dates]
     };
     this.props.bookRoom(data, id);
+    Swal.fire({
+      title: "Done!",
+      text: "Room Booked ... ",
+      icon: "success",
+      timer: 1000,
+      button: false
+    }).then(() => {
+      this.props.history.push("/");
+    });
   };
 
   render() {
@@ -73,6 +83,7 @@ const mapStateToProps = state => {
   return {
     isLoading: state.roomReducer.isLoading,
     error: state.roomReducer.error,
+    allRooms: state.roomReducer.allRooms,
     availableRooms: state.roomReducer.availableRooms
   };
 };
