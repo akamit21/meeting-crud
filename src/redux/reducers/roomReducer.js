@@ -11,8 +11,8 @@ let initialState = {
   isLoading: false,
   error: null,
   allRooms: [],
+  rooms: [],
   availableRooms: [],
-  filteredRooms: [],
   bookedRooms: []
 };
 
@@ -40,26 +40,44 @@ export const roomReducer = (state = initialState, action) => {
     }
     case AVAILABLE_ROOM: {
       const { startDate, endDate } = action.payload;
-      let temp = state.allRooms.filter(room => room.isBooked === false);
+      // console.log(startDate);
+      let temp = [];
+      state.allRooms.forEach(room => {
+        let count = 0;
+        // eslint-disable-next-line array-callback-return
+        room.bookedDate.filter(function(x) {
+          if (
+            (startDate >= x.startDate && startDate <= x.endDate) ||
+            (endDate >= x.startDate && endDate <= x.endDate)
+          ) {
+            count++;
+          }
+        });
+        console.log(count);
+        if (count === 0) {
+          temp.push(room);
+        }
+      });
       console.log(temp);
       return {
         ...state,
+        rooms: [...temp],
         availableRooms: [...temp]
       };
     }
     case FILTER_ROOM: {
-      let temp = state.availableRooms.filter(
-        room => room.floor === action.payload
+      let temp = state.rooms.filter(
+        room => room.floor === parseInt(action.payload)
       );
       if (action.payload === "") {
         return {
           ...state,
-          filteredRooms: [...state.availableRooms]
+          availableRooms: [...state.availableRooms]
         };
       }
       return {
         ...state,
-        filteredRooms: [...temp]
+        availableRooms: [...temp]
       };
     }
     case SORT_ROOM: {

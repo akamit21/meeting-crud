@@ -6,8 +6,16 @@
       "name": "Room Four",
       "capacity": 25,
       "price": 4328,
-      "isBooked": false,
-      "bookedDate": []
+      "bookedDate": [
+        {
+          "startDate": 1583020800000,
+          "endDate": 1583625600000
+        },
+        {
+          "startDate": 1584316800000,
+          "endDate": 1584748800000
+        }
+      ]
     },
     {
       "id": "k7nanaxz",
@@ -15,8 +23,12 @@
       "name": "Room Seven",
       "capacity": 15,
       "price": 3121,
-      "isBooked": false,
-      "bookedDate": []
+      "bookedDate": [
+        {
+          "startDate": 1584316800000,
+          "endDate": 1584748800000
+        }
+      ]
     },
     {
       "id": "k6nanaxz",
@@ -24,62 +36,12 @@
       "name": "Room Three",
       "capacity": 16,
       "price": 1128,
-      "isBooked": false,
-      "bookedDate": []
-    },
-    {
-      "id": "a7nanaxz",
-      "floor": 4,
-      "name": "Room Four",
-      "capacity": 17,
-      "price": 2544,
-      "isBooked": false,
-      "bookedDate": []
-    },
-    {
-      "id": "b6nanaxz",
-      "floor": 2,
-      "name": "Room Eight",
-      "capacity": 49,
-      "price": 6933,
-      "isBooked": false,
-      "bookedDate": []
-    },
-    {
-      "id": "c8nanaxz",
-      "floor": 1,
-      "name": "Room Three",
-      "capacity": 37,
-      "price": 4219,
-      "isBooked": false,
-      "bookedDate": []
-    },
-    {
-      "id": "d1aanaxz",
-      "floor": 4,
-      "name": "Room Seven",
-      "capacity": 48,
-      "price": 2522,
-      "isBooked": false,
-      "bookedDate": []
-    },
-    {
-      "id": "k4zbnaxz",
-      "floor": 4,
-      "name": "Room Four",
-      "capacity": 32,
-      "price": 2478,
-      "isBooked": false,
-      "bookedDate": []
-    },
-    {
-      "id": "k5zbmaxz",
-      "floor": 2,
-      "name": "Room Eight",
-      "capacity": 25,
-      "price": 8146,
-      "isBooked": false,
-      "bookedDate": []
+      "bookedDate": [
+        {
+          "startDate": 1584921600000,
+          "endDate": 1585267200000
+        }
+      ]
     }
   ]
 }

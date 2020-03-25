@@ -30,14 +30,13 @@ class ListRoom extends Component {
 
   getRoomId = id => {
     // alert(id);
+    let r = this.props.availableRooms.filter(room => room.id === id);
+    let dates = {
+      startDate: this.state.startDate,
+      endDate: this.state.endDate
+    };
     let data = {
-      isBooked: true,
-      bookedDate: [
-        {
-          startDate: this.state.startDate,
-          endDate: this.state.endDate
-        }
-      ]
+      bookedDate: [...r[0].bookedDate, dates]
     };
     this.props.bookRoom(data, id);
   };

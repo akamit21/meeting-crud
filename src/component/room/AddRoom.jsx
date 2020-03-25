@@ -28,7 +28,6 @@ class AddRoom extends Component {
       name: this.state.name,
       capacity: Number(this.state.capacity),
       price: Number(this.state.price),
-      isBooked: false,
       bookedDate: []
     };
     this.props.addRoom(data);
