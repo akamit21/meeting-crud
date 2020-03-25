@@ -1,6 +1,6 @@
 # React Meeting Room
 
-This is a simple app used to Book Meeting Room date slot wise.\
+This is a simple app used to Book Meeting Room date slot wise.
 
 ---
 
